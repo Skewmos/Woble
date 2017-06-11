@@ -161,16 +161,22 @@ function checkCsrf(){
 
 }
 
-// Fonction de récupération de l'adresse IP du visiteur
-function get_ip(){
-   if(isset($_SERVER['HTTP_X_FORWARDED_FOR'])){
-       $ip = $_SERVER['HTTP_X_FORWARDED_FOR'];
-   }elseif(isset($_SERVER['HTTP_CLIENT_IP'])){
-       $ip  = $_SERVER['HTTP_CLIENT_IP'];
-   }else{
-       $ip = $_SERVER['REMOTE_ADDR'];
-   }
-   return $ip;
+/**
+ * Récupérer la véritable adresse IP d'un visiteur
+ */
+function get_ip() {
+	// IP si internet partagé
+	if (isset($_SERVER['HTTP_CLIENT_IP'])) {
+		return $_SERVER['HTTP_CLIENT_IP'];
+	}
+	// IP derrière un proxy
+	elseif (isset($_SERVER['HTTP_X_FORWARDED_FOR'])) {
+		return $_SERVER['HTTP_X_FORWARDED_FOR'];
+	}
+	// Sinon : IP normale
+	else {
+		return (isset($_SERVER['REMOTE_ADDR']) ? $_SERVER['REMOTE_ADDR'] : '');
+	}
 }
 
 // Fonction qui permet de créer un répertoire
@@ -303,5 +309,4 @@ if (!function_exists('folder_only')) {
   }
   }
 }
-
 ?>

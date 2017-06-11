@@ -24,6 +24,7 @@
           <tr>
             <th>Message</th>
             <th>Utilisateur</th>
+            <th>Id utilisateur</th>
             <th>Ip</th>
             <th>Date et heure</th>
           </tr>
@@ -33,12 +34,13 @@
           <?php
 
             $req = $database->query('SELECT * FROM logs');
-            while($data = $req->fetch()){
+            while($data = $req->fetch(PDO::FETCH_OBJ)){
               echo '<tr>
                       <td>'.$data->message.'</td>
                       <td>'.$data->username.'</td>
+                      <td>'.$data->id_user.'</td>
                       <td>'.$data->ip.'</td>
-                      <td>Le '.date("d/m/Y à H:i", strtotime($data->date)).'</td>
+                      <td>Le '.date("d/m/Y à H:i", strtotime($data->date_logs)).'</td>
                     </tr>';
             }
 

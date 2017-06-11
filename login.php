@@ -24,6 +24,17 @@
         $q = $database->query("SELECT id FROM directory  WHERE id_user = $id_user");
          $user_directory = $q->fetch(PDO::FETCH_OBJ);
          folder_only();
+         $logs = $database->prepare("INSERT INTO logs SET message = :message , ip = :ip , date_logs = NOW(), id_user = :id_user,username = :username");
+         $message = $_SESSION['auth']->username.' vient de se connecter .';
+         $ip =  get_ip();
+         $logs->execute([
+           'message' => $message ,
+           'ip' => $ip,
+           'id_user' => $user->id,
+           'username' => $_SESSION['auth']->username
+
+         ]);
+         
         redirection_link('file_account');
         exit();
       }else{

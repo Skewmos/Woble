@@ -57,6 +57,16 @@ session_start();
       $name = $database->quote($_FILES['file']['name']);
       $directory_id = $database->quote($_SESSION['auth']->id);
       $database->query("INSERT INTO files SET name = $name, id_directory = $directory_id");
+      $logs = $database->prepare("INSERT INTO logs SET message = :message , ip = :ip , date_logs = NOW(), id_user = :id_user,username = :username");
+      $message = $_SESSION['auth']->username.' a upload un fichier .';
+      $ip =  get_ip();
+      $logs->execute([
+        'message' => $message ,
+        'ip' => $ip,
+        'id_user' => $_SESSION['auth']->id,
+        'username' => $_SESSION['auth']->username
+
+      ]);
   }
 
 ?>
