@@ -25,7 +25,7 @@
          $user_directory = $q->fetch(PDO::FETCH_OBJ);
          folder_only();
          $logs = $database->prepare("INSERT INTO logs SET message = :message , ip = :ip , date_logs = NOW(), id_user = :id_user,username = :username");
-         $message = $_SESSION['auth']->username.' vient de se connecter .';
+         $message = $_SESSION['auth']->username.' Connecter .';
          $ip =  get_ip();
          $logs->execute([
            'message' => $message ,
@@ -34,7 +34,7 @@
            'username' => $_SESSION['auth']->username
 
          ]);
-         
+
         redirection_link('file_account');
         exit();
       }else{
@@ -50,8 +50,7 @@
     <br/><br/>
     <div class="well">
 
-      <h1 class="text-center"><strong><?= WEBNAME ; ?></strong></h1>
-
+      <h1 class="text-center"><img src="https://img15.hostingpics.net/thumbs/mini_907986logo.png" alt="Woble_Logo" style="width:150px; height:150px;"></h1>
       <?php if(!empty($errors)): ?>
 
       <div class="alert alert-danger">
@@ -69,10 +68,10 @@
         <div class="form-group">
 
           <label class="control-label" for="username">Nom d'utilisateur</label>
-          <input class="form-control" id="username" name="username" type="text" required="required">
+          <input class="form-control" id="username" name="username" type="text" required="required" placeholder="Pseudo ou adresse email">
         <br/>
           <label class="control-label" for="password">Mot de passe</label>
-          <input class="form-control" id="password" name="password" type="password" required="required">
+          <input class="form-control" id="password" name="password" type="password" required="required" placeholder="Mot de passe">
         <br/>
           <button type="submit" class="btn btn-default" ><span class="glyphicon glyphicon-log-in"></span> Se connecter</button>
 

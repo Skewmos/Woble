@@ -71,7 +71,7 @@ if (!empty($_POST)) {
 <div class="container-fluid">
   <form data-parsley-validate class="form-horizontal well" action='' method="POST">
     <fieldset>
-    <h1 class="text-center"><strong><?= WEBNAME ; ?></strong></h1>
+    <h1 class="text-center"><img src="https://img15.hostingpics.net/thumbs/mini_907986logo.png" alt="Woble_logo" style="width:100px; height:100px;"></h1>
     <br>
       <!-- Affichage des erreurs -->
         <?php include('partials/_error.php'); ?>

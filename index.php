@@ -1,4 +1,5 @@
 <?php
+$name = pathinfo('www/Woble/index.php');
 /****************************
 * Inclusion des divers fichiers *
 *****************************/
@@ -61,7 +62,7 @@ require('partials/_header.php');
     <div class="col-sm-4">
       <span class="glyphicon glyphicon-tasks logo-small"></span>
       <h4>Nos serveurs</h4>
-      <p>Des serveurs hébergés par Droid-Center</p>
+      <p>Des serveurs hébergés par Horyzone</p>
     </div>
     <div class="col-sm-4">
       <span class="glyphicon glyphicon-folder-open logo-small"></span>

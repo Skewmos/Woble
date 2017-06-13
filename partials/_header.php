@@ -12,6 +12,7 @@ reconnect_cookie();
   <head>
 <!--Meta-->
     <meta charset="utf-8">
+    <meta name="google-site-verification" content="YvyBnXvekpg5vSf994RuWmRew_jEjtwA07KwJM8GEvM" />
     <title><?=WEBNAME;?></title>
 <!-- Faveicon -->
     <link rel="shortcut icon" href="images/icon.ico">

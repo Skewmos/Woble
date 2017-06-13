@@ -19,7 +19,9 @@ if (session_status() == PHP_SESSION_NONE ) {
       <!-- Navbar Right Home -->
       <ul class="nav navbar-nav navbar-right">
         <li><a href="index.php" id="color">Accueil</a></li>
-        <li><a href="#services" id="color">services</a></li>
+        <?php if (isset($name['filename']) and $name['filename'] == 'index'): ?>
+          <li><a href="#services" id="color">Services</a></li>
+        <?php endif; ?>
         <li class="dropdown">
           <?php if (isset($_SESSION['auth'])): ?>
               <a class="dropdown-toggle" data-toggle="dropdown" id="color"  href="#">Information<span class="caret"></span></a>
