@@ -1,6 +1,7 @@
 <?php
   $page = "settings";
   require_once 'inc/header.php';
+    require_once 'inc/nav.php';
   is_admin();
 
   if(!empty($_POST)){

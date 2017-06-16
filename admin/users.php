@@ -1,6 +1,7 @@
 <?php
   $page = "users";
   require_once 'inc/header.php';
+    require_once 'inc/nav.php';
   is_admin();
 
   if(isset($_GET['delete']) && preg_match("/^[0-9]+$/i",$_GET['delete'])){

@@ -56,10 +56,11 @@ if (!empty($_POST)) {
     $password =password_hash($_POST['password'] , PASSWORD_BCRYPT);
     $req->execute([$_POST['username'], $_POST['email'], $password]);
     $user_id = $database->lastInsertId();
-    $q = $database->prepare('INSERT INTO directory SET name = :name , id_user = :id');
+    $q = $database->prepare('INSERT INTO directory SET name = :name , id_user = :id , id_ranks = :ranks');
     $q->execute([
     'name' => $user_id,
-    'id'=> $user_id
+    'id'=> $user_id ,
+    'ranks' => 2
       ]);
     $_SESSION['flash']['success'] = "Vous pouvez vous connectez !";
     redirect('login.php');

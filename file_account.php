@@ -7,7 +7,6 @@ session_start();
   require('include/constant.php');
   require_once 'partials/_header.php';
   is_authenticated();
-  $rank = check_rank($_SESSION['auth']->id_rank);
   $directory = check_directory($_SESSION['auth']->id);
   $maxUploadSize = maxUploadSize();
   if(isset($_GET['delete']) && preg_match("/^[0-9]+$/i",$_GET['delete'])){
@@ -86,13 +85,7 @@ session_start();
         </ul>
 
         <ul class="nav nav-pills pull-right">
-          <?php
-
-          if($rank === "admin"){
-            echo '<li><a href="admin/index.php"><span class="glyphicon glyphicon-user"></span> Panel admin</a></li>';
-          }
-          ?>
-          <li><a href="logout.php"><span class="glyphicon glyphicon-log-out"></span> Se déconnecter</a></li>
+                <li><a href="logout.php"><span class="glyphicon glyphicon-log-out"></span> Se déconnecter</a></li>
         </ul>
 
       </nav>

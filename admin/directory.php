@@ -1,6 +1,7 @@
 <?php
   $page = "directory";
   require_once 'inc/header.php';
+    require_once 'inc/nav.php';
 
   if(isset($_GET['delete_directory']) && preg_match("/^[0-9]+$/i",$_GET['delete_directory'])){
     if(checkCsrf() === true){

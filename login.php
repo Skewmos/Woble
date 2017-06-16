@@ -25,7 +25,7 @@
          $user_directory = $q->fetch(PDO::FETCH_OBJ);
          folder_only();
          $logs = $database->prepare("INSERT INTO logs SET message = :message , ip = :ip , date_logs = NOW(), id_user = :id_user,username = :username");
-         $message = $_SESSION['auth']->username.' Connecter .';
+         $message = ' Connexion : '.$_SESSION['auth']->username;
          $ip =  get_ip();
          $logs->execute([
            'message' => $message ,

@@ -94,17 +94,6 @@ function is_admin(){
         $_SESSION['csrf'] = md5(time() + rand());
     }
   }
-
-  $rank_id = $database->quote($_SESSION['auth']->id_rank);
-  $req = $database->query("SELECT name FROM ranks WHERE id = $rank_id");
-  $rank = $req->fetch();
-
-  if(isset($rank) && $rank->name != "admin"){
-    $_SESSION['flash']['danger'] = "Vous n'avez pas les permissions pour accéder à cette page";
-    redirection_link('index');
-    exit();
-  }
-
 }
 
 // Générateur de clé

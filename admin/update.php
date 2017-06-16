@@ -1,6 +1,7 @@
 <?php
   $page = "users";
   require_once 'inc/header.php';
+    require_once 'inc/nav.php';
   is_admin();
 
   // On récupère les informations de l'utilisateur selectionné pour pré-remplir le formulaire
@@ -103,23 +104,10 @@
             <label class="control-label" for="password2">Confirmation le nouveau mot de passe</label>
             <input class="form-control" id="password2" name="password2" type="password">
           <br/>
-            <label class="control-label" for="group">Groupe</label>
-            <select class="form-control" id="group" name="rank">
-              <?php
-              $ranks = $database->query('SELECT * FROM ranks');
-              while($ranks_list = $ranks->fetch()){
-                if($ranks_list->id == $rank_user){
-                  echo '<option value="'.$ranks_list->id.'" selected>'.$ranks_list->name.'</option>';
-                }else{
-                  echo '<option value="'.$ranks_list->id.'">'.$ranks_list->name.'</option>';
-                }
-              }
-              ?>
-            </select>
             <?php echo csrfInput(); ?>
           <br/>
-            <button type="submit" class="btn btn-success"><span class="glyphicon glyphicon-floppy-disk"></span> Enregistrer</button>
-            <a href="users.php" class="btn btn-danger"><span class="glyphicon glyphicon-remove"></span> Annuler</a>
+            <button type="submit" class="btn btn-success"> Enregistrer</button>
+            <a href="users.php" class="btn btn-danger"> Annuler</a>
 
           </div>
         </form>
