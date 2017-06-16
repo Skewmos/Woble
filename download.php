@@ -1,7 +1,12 @@
 <?php
+/****************************
+* Inclusion des divers fichiers *
+*****************************/
   require_once 'include/database.php';
   require_once 'include/function.php';
-
+  /****************************
+  * Traitement  *
+  *****************************/
   if(isset($_GET['id']) && preg_match("/^[0-9]+$/i",$_GET['id'])){
 
     if(isset($_GET['type']) && $_GET['type'] == 'folder'){

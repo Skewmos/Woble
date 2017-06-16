@@ -6,9 +6,9 @@
 require('include/constant.php');
 require('partials/_header.php');
 
-/**
-* Verification du formulaire et du speudo
-**/
+/****************************
+* Formulaire || verification *
+*****************************/
 if (!empty($_POST)) {
   // inisialisation du tableaux d'erreurs
   $errors = [];
@@ -22,21 +22,21 @@ if (!empty($_POST)) {
       $errors['pseudo'] = "Ce pseudo est déja utilisée";
     }
   }
-  /**
-  *Pseudo utilisée*
-**/
+  /****************************
+  * Pseudo deja utiliser *
+  *****************************/
     if (is_already_in_use('username' , $_POST['username'] , 'users')) {
        $errors['pseudo_use'] = "Pseudo deja utilisé";
     }
-/**
-  *email utilisée*
-**/
+    /****************************
+    * Email deja utiliser *
+    *****************************/
     if (is_already_in_use('email' , $_POST['email'] , 'users')) {
        $errors['email_use'] = "Cette adresse email est déja utilisée pour un autre compte !";
     }
-  /**
-  * On verifie la validitée de l'adresse email
-  **/
+    /****************************
+    * Validitée de l'adresse email *
+    *****************************/
   if (empty($_POST['email']) || !filter_var($_POST['email'] , FILTER_VALIDATE_EMAIL)) {
     $errors['email'] = "Votre email n'est pas valide";
   }else {
@@ -48,9 +48,9 @@ if (!empty($_POST)) {
   if (empty($_POST['password']) || $_POST['password'] != $_POST['password_con']) {
     $errors['password'] = "Vous devez renter un mot de passe valide";
   }
-  /**
-  * On verifie si la variable error est vide si c'est le cas on enregistre l'user en Bdd
-  **/
+  /****************************
+  * Enregistrement de l'utilisateur en base de donée  *
+  *****************************/
   if (empty($errors)) {
     $req = $database->prepare("INSERT INTO users SET username = ? , email = ? , password = ?");
     $password =password_hash($_POST['password'] , PASSWORD_BCRYPT);

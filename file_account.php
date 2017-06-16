@@ -7,6 +7,9 @@ session_start();
   require('include/constant.php');
   require_once 'partials/_header.php';
   is_authenticated();
+  /****************************
+  * Traitement du formulaire *
+  *****************************/
   $directory = check_directory($_SESSION['auth']->id);
   $maxUploadSize = maxUploadSize();
   if(isset($_GET['delete']) && preg_match("/^[0-9]+$/i",$_GET['delete'])){
@@ -21,9 +24,9 @@ session_start();
     exit();
   }
 
-  /*
-  * Upload de fichier
-  */
+  /****************************
+  * Upload des fichiers *
+  *****************************/
   if(!empty($_FILES['file']['name'])){
     checkCsrf();
     // Vérification de la taille du fichier
@@ -32,9 +35,9 @@ session_start();
       header('location: index.php');
       exit();
     }
-      /*
-       * Envoie de fichier sur serveur
-       */
+    /****************************
+    * Envoye des fichiers sur le serveur  *
+    *****************************/
       $file_exist = false;
       $directory_id = $database->quote($_SESSION['auth']->id);
       $req = $database->query("SELECT * FROM files WHERE id_directory = $directory_id");
@@ -50,9 +53,9 @@ session_start();
         $file_name = $_FILES['file']['name'];
         move_uploaded_file($_FILES['file']["tmp_name"], $target_file);
       }
-      /*
-       * Enregistrement du fichier en base
-       */
+      /****************************
+      * Enregistrement des fichiers en BBD *
+      *****************************/
       $name = $database->quote($_FILES['file']['name']);
       $directory_id = $database->quote($_SESSION['auth']->id);
       $database->query("INSERT INTO files SET name = $name, id_directory = $directory_id");

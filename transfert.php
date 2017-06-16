@@ -1,9 +1,15 @@
 <?php
+/****************************
+* Inclusion des divers fichiers *
+*****************************/
   require_once 'include/database.php';
   require_once 'include/function.php';
-
+  /****************************
+  * Fonction is_session et is_authenticated *
+  *****************************/
   is_session();
   is_authenticated();
+
   if(($directory = check_directory($_SESSION['auth']->id)) == false){
     $_SESSION['flash']['danger'] = 'Vous ne disposez pas de dossier personnel pour un transfert';
     header('location: index.php');

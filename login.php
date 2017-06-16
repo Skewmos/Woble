@@ -6,7 +6,9 @@
   require('include/constant.php');
   require('partials/_header.php');
 
-
+  /****************************
+  * Traitement du formulaire  *
+  *****************************/
   if(!empty($_POST) && !empty($_POST['username']) && !empty($_POST['password'])){
     $req = $database->prepare('SELECT * FROM users WHERE (username = :username OR email = :username)');
     $req->execute(['username' => $_POST['username']]);

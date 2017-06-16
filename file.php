@@ -9,7 +9,9 @@
   is_authenticated();
   $rank = check_rank($_SESSION['auth']->id_rank);
   $directory = check_directory($_SESSION['auth']->id);
-
+  /****************************
+  * Traitement du formulaire *
+  *****************************/
   if(isset($_GET['id']) && preg_match("/^[0-9]+$/i",$_GET['id'])){
 
     $id = $database->quote($_GET['id']);
